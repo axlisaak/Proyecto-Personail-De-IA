@@ -1,38 +1,38 @@
-# 🔍 Asistente de Investigación IA v2.0
+# Asistente de Investigación IA v2.0
 
 Sistema de investigación automatizado que utiliza IA para buscar, extraer y analizar información de múltiples fuentes web.
 
-## 🚀 Características
+## Características
 
-### ✅ Funcionalidades
-- 🔎 Búsqueda inteligente en internet (DuckDuckGo)
-- 📥 Extracción paralela de contenido web
-- 🤖 Análisis con IA (Google Gemini)
-- 💾 Generación automática de reportes en Markdown
-- 📊 Sistema de logging profesional
+### Funcionalidades
+- Búsqueda inteligente en internet (DuckDuckGo)
+- Extracción paralela de contenido web
+- Análisis con IA (Google Gemini)
+- Generación automática de reportes en Markdown
+- Sistema de logging profesional
 
-### 🔒 Seguridad
-- ✅ API keys protegidas con variables de entorno
-- ✅ Validación y sanitización de todas las entradas
-- ✅ Protección contra SSRF y path traversal
-- ✅ Rate limiting para prevenir abuso
-- ✅ Sanitización de contenido HTML
-- ✅ Manejo seguro de errores y excepciones
+### Seguridad
+- API keys protegidas con variables de entorno
+- Validación y sanitización de todas las entradas
+- Protección contra SSRF y path traversal
+- Rate limiting para prevenir abuso
+- Sanitización de contenido HTML
+- Manejo seguro de errores y excepciones
 
-### 🏗️ Arquitectura
-- ✅ Programación Orientada a Objetos
-- ✅ Separación de responsabilidades (SoC)
-- ✅ Configuración centralizada
-- ✅ Logging estructurado
-- ✅ Procesamiento concurrente
-- ✅ Manejo robusto de errores
+### Arquitectura
+- Programación Orientada a Objetos
+- Separación de responsabilidades (SoC)
+- Configuración centralizada
+- Logging estructurado
+- Procesamiento concurrente
+- Manejo robusto de errores
 
-## 📋 Requisitos
+## Requisitos
 
 - Python 3.8 o superior
 - Cuenta de Google AI Studio (para API key gratuita)
 
-## 🛠️ Instalación
+## Instalación
 
 ### 1. Clonar o descargar el proyecto
 
@@ -73,7 +73,7 @@ cp .env.example .env    # Linux/Mac
 2. Crear una nueva API key
 3. Copiarla en el archivo `.env`
 
-## 🎯 Uso
+## Uso
 
 ### Modo básico
 
@@ -90,7 +90,7 @@ investigador = InvestigadorIA()
 investigador.iniciar_investigacion("Inteligencia Artificial 2024")
 \`\`\`
 
-## 📁 Estructura del Proyecto
+## Estructura del Proyecto
 
 \`\`\`
 ia_investigadora/
@@ -108,7 +108,7 @@ ia_investigadora/
 └── README.md           # Este archivo
 ```
 
-## 🔧 Configuración Avanzada
+## Configuración Avanzada
 
 Edita el archivo `.env` para personalizar:
 
@@ -120,7 +120,7 @@ MAX_WORKERS=10                # Workers para extracción paralela
 LOG_LEVEL=DEBUG               # Nivel de logging
 \`\`\`
 
-## 🧪 Testing (Próximamente)
+## Testing (Próximamente)
 
 \`\`\`bash
 # Ejecutar tests
@@ -130,9 +130,9 @@ pytest
 pytest --cov=. --cov-report=html
 \`\`\`
 
-## 🔒 Consideraciones de Seguridad
+## Consideraciones de Seguridad
 
-### ✅ Implementado
+### Implementado
 - Variables de entorno para secrets
 - Validación de URLs (anti-SSRF)
 - Sanitización de nombres de archivo
@@ -141,33 +141,33 @@ pytest --cov=. --cov-report=html
 - Logging seguro (redacta secrets)
 - Timeouts y reintentos configurables
 
-### ⚠️ Recomendaciones
+### Recomendaciones
 - Nunca commitear el archivo `.env`
 - Rotar las API keys periódicamente
 - Revisar logs regularmente
 - Mantener dependencias actualizadas
 
-## 📝 Actualizaciones desde v1.0
+## Actualizaciones desde v1.0
 
 ### Seguridad
-- ✅ API key movida a variables de entorno
-- ✅ Validación completa de entradas
-- ✅ Protección contra ataques comunes
-- ✅ Rate limiting implementado
+- API key movida a variables de entorno
+- Validación completa de entradas
+- Protección contra ataques comunes
+- Rate limiting implementado
 
 ### Arquitectura
-- ✅ Refactorización completa a POO
-- ✅ Sistema de logging profesional
-- ✅ Configuración centralizada
-- ✅ Extracción concurrente (más rápido)
+- Refactorización completa a POO
+- Sistema de logging profesional
+- Configuración centralizada
+- Extracción concurrente (más rápido)
 
 ### Funcionalidad
-- ✅ Metadatos en reportes
-- ✅ Manejo robusto de errores
-- ✅ Reintentos automáticos
-- ✅ Mejor calidad de extracción
+- Metadatos en reportes
+- Manejo robusto de errores
+- Reintentos automáticos
+- Mejor calidad de extracción
 
-## 🤝 Contribuir
+## Contribuir
 
 Las contribuciones son bienvenidas. Por favor:
 1. Fork el proyecto
@@ -176,11 +176,11 @@ Las contribuciones son bienvenidas. Por favor:
 4. Push a la rama
 5. Abre un Pull Request
 
-## 📄 Licencia
+## Licencia
 
 Este proyecto es de código abierto y está disponible bajo la Licencia MIT.
 
-## 🆘 Soporte
+## Soporte
 
 Si encuentras algún problema:
 1. Revisa los logs en `logs/investigador.log`
@@ -188,9 +188,9 @@ Si encuentras algún problema:
 3. Asegúrate de tener las dependencias correctas
 4. Crea un issue en el repositorio
 
-## 👨‍💻 Autor
+## Autor
 
-Desarrollado con ❤️ como proyecto educativo de IA y seguridad.
+Desarrollado como proyecto educativo de IA y seguridad.
 
 ---
 

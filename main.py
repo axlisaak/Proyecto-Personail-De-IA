@@ -32,8 +32,8 @@ class InvestigadorIA:
             
         except ValueError as e:
             logger.error(f"Error de configuración: {str(e)}")
-            print(f"\n❌ Error de configuración:\n{str(e)}")
-            print("\n💡 Asegúrate de:")
+            print(f"\n[!] Error de configuración:\n{str(e)}")
+            print("\n[*] Asegúrate de:")
             print("  1. Copiar .env.example a .env")
             print("  2. Agregar tu GOOGLE_API_KEY en .env")
             sys.exit(1)
@@ -86,8 +86,8 @@ class InvestigadorIA:
             tema: Tema a investigar (si es None, solicita al usuario)
         """
         print("\n" + "="*60)
-        print("    🔍 Asistente de Investigación IA v2.0")
-        print("    🔒 Versión Segura y Profesional")
+        print("    Asistente de Investigación IA v2.0")
+        print("    Versión Segura y Profesional")
         print("="*60)
         
         # Solicitar tema si no se proporciona
@@ -95,33 +95,33 @@ class InvestigadorIA:
             tema = input("\n¿Sobre qué te gustaría investigar hoy?: ").strip()
         
         if not tema:
-            print("❌ Debes proporcionar un tema de investigación")
+            print("[ERROR] Debes proporcionar un tema de investigación")
             return
         
         print("\n" + "-"*60)
         logger.info(f"Iniciando investigación sobre: '{tema}'")
         
         # 1. Búsqueda en internet
-        print(f"\n🔎 Buscando información sobre: '{tema}'...")
+        print(f"\n[*] Buscando información sobre: '{tema}'...")
         resultados = self.buscador.buscar_en_internet(tema)
         
         if not resultados:
-            print("❌ No se encontraron resultados. Intenta con otro tema.")
+            print("[!] No se encontraron resultados. Intenta con otro tema.")
             logger.warning("Búsqueda sin resultados")
             return
         
-        print(f"✅ Se encontraron {len(resultados)} fuentes")
+        print(f"[+] Se encontraron {len(resultados)} fuentes")
         
         # 2. Extracción de contenido (paralelo)
-        print(f"\n📥 Extrayendo contenido de {len(resultados)} fuentes...")
+        print(f"\n[*] Extrayendo contenido de {len(resultados)} fuentes...")
         contenidos = self.extraer_contenido_concurrente(resultados)
         
         if not contenidos:
-            print("❌ No se pudo extraer contenido de ninguna fuente")
+            print("[!] No se pudo extraer contenido de ninguna fuente")
             logger.error("Extracción fallida para todas las fuentes")
             return
         
-        print(f"✅ Contenido extraído de {len(contenidos)} fuentes")
+        print(f"[+] Contenido extraído de {len(contenidos)} fuentes")
         
         # 3. Combinar contenido
         texto_combinado = ""
@@ -131,17 +131,17 @@ class InvestigadorIA:
             texto_combinado += f"{'='*50}\n{contenido}"
         
         # 4. Análisis con IA
-        print("\n🤖 Analizando información con IA...")
+        print("\n[*] Analizando información con IA...")
         reporte_final = self.analista.resumir_texto(texto_combinado, tema)
         
         if not reporte_final:
-            print("❌ Error al generar el análisis con IA")
+            print("[!] Error al generar el análisis con IA")
             logger.error("Análisis IA falló")
             return
         
         # 5. Mostrar resultado
         print("\n" + "="*60)
-        print("    📊 REPORTE DE INVESTIGACIÓN")
+        print("    REPORTE DE INVESTIGACIÓN")
         print("="*60)
         print(reporte_final)
         print("="*60 + "\n")
@@ -160,7 +160,7 @@ class InvestigadorIA:
         )
         
         if ruta_guardado:
-            print(f"💾 Reporte guardado en: {ruta_guardado}\n")
+            print(f"[+] Reporte guardado en: {ruta_guardado}\n")
         
         logger.info("Investigación completada exitosamente")
 
@@ -171,11 +171,11 @@ def main():
         investigador = InvestigadorIA()
         investigador.iniciar_investigacion()
     except KeyboardInterrupt:
-        print("\n\n⚠️  Investigación cancelada por el usuario")
+        print("\n\n[!] Investigación cancelada por el usuario")
         logger.info("Programa interrumpido por el usuario")
     except Exception as e:
         logger.critical(f"Error crítico no manejado: {str(e)}", exc_info=True)
-        print(f"\n❌ Error crítico: {str(e)}")
+        print(f"\n[!] Error crítico: {str(e)}")
         sys.exit(1)
 
 
