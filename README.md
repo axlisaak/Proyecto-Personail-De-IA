@@ -193,6 +193,6 @@ Si encuentras algún problema:
 Desarrollado como proyecto educativo de IA y seguridad.
 
 ---
-
+hola
 **Versión:** 2.0.0  
 **Última actualización:** 2026
