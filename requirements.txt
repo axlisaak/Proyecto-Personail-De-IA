@@ -1,0 +1,17 @@
+# Dependencias del proyecto con versiones específicas para seguridad
+requests==2.31.0
+beautifulsoup4==4.12.3
+duckduckgo-search==5.3.1
+google-generativeai>=0.3.0  # Versión flexible para compatibilidad
+python-dotenv==1.0.1
+ratelimit==2.2.1
+validators==0.22.0
+bleach==6.1.0
+# lxml removido - requiere compiladores C++, beautifulsoup4 usa html.parser por defecto
+
+# Desarrollo y Testing (opcional - solo para desarrolladores)
+# pytest==8.0.0
+# pytest-cov==4.1.0
+# black==24.1.1
+# flake8==7.0.0
+# mypy==1.8.0

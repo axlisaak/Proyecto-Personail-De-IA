@@ -1,0 +1,31 @@
+# Archivos sensibles
+.env
+*.key
+secrets.json
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+venv/
+env/
+ENV/
+
+# Logs
+logs/
+*.log
+
+# IDEs
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Reportes (opcional, dependiendo si quieres versionar)
+# reportes_guardados/
