@@ -40,7 +40,7 @@ class IAAnalyzer:
             }
         ]
         
-        self.modelo = genai.GenerativeModel('gemini-2.5-flash')
+        self.modelo = genai.GenerativeModel('models/gemini-2.5-flash')
         
         logger.info("Analizador IA inicializado correctamente")
     
