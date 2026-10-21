@@ -1,7 +1,9 @@
 """
 Módulo mejorado de análisis con IA con seguridad y manejo robusto.
+Actualizado para usar el nuevo SDK google-genai.
 """
-import google.generativeai as genai
+from google import genai
+from google.genai import types
 from typing import Optional
 from config import Config
 from logger import logger
@@ -18,31 +20,32 @@ class IAAnalyzer:
                 "Agrega tu clave en el archivo .env"
             )
         
-        genai.configure(api_key=Config.GOOGLE_API_KEY)
+        # Inicializar cliente con nuevo SDK
+        self.client = genai.Client(api_key=Config.GOOGLE_API_KEY)
         
         # Configurar safety settings para contenido apropiado
         self.safety_settings = [
-            {
-                "category": "HARM_CATEGORY_HARASSMENT",
-                "threshold": "BLOCK_MEDIUM_AND_ABOVE"
-            },
-            {
-                "category": "HARM_CATEGORY_HATE_SPEECH",
-                "threshold": "BLOCK_MEDIUM_AND_ABOVE"
-            },
-            {
-                "category": "HARM_CATEGORY_SEXUALLY_EXPLICIT",
-                "threshold": "BLOCK_MEDIUM_AND_ABOVE"
-            },
-            {
-                "category": "HARM_CATEGORY_DANGEROUS_CONTENT",
-                "threshold": "BLOCK_MEDIUM_AND_ABOVE"
-            }
+            types.SafetySetting(
+                category="HARM_CATEGORY_HARASSMENT",
+                threshold="BLOCK_MEDIUM_AND_ABOVE"
+            ),
+            types.SafetySetting(
+                category="HARM_CATEGORY_HATE_SPEECH",
+                threshold="BLOCK_MEDIUM_AND_ABOVE"
+            ),
+            types.SafetySetting(
+                category="HARM_CATEGORY_SEXUALLY_EXPLICIT",
+                threshold="BLOCK_MEDIUM_AND_ABOVE"
+            ),
+            types.SafetySetting(
+                category="HARM_CATEGORY_DANGEROUS_CONTENT",
+                threshold="BLOCK_MEDIUM_AND_ABOVE"
+            )
         ]
         
-        self.modelo = genai.GenerativeModel('models/gemini-2.5-flash')
+        self.modelo = 'gemini-2.5-flash'
         
-        logger.info("Analizador IA inicializado correctamente")
+        logger.info("Analizador IA inicializado correctamente (nuevo SDK)")
     
     def resumir_texto(self, texto_extraido: str, tema: str) -> Optional[str]:
         """
@@ -63,7 +66,6 @@ class IAAnalyzer:
             return None
         
         # Limitar tamaño para evitar costos excesivos
-        # Gemini Flash tiene límite de ~1M tokens, pero limitamos preventivamente
         max_chars = 50000
         if len(texto_extraido) > max_chars:
             logger.warning(f"Texto truncado de {len(texto_extraido)} a {max_chars} caracteres")
@@ -92,18 +94,23 @@ Actúa como un investigador experto y analista profesional. Has recopilado infor
 """
         
         try:
-            # Generar contenido con configuración de seguridad
-            response = self.modelo.generate_content(
-                prompt,
-                generation_config=genai.types.GenerationConfig(
-                    temperature=0.7,
-                    top_p=0.95,
-                    top_k=40,
-                    max_output_tokens=2048,
-                )
+            # Configuración de generación
+            config = types.GenerateContentConfig(
+                temperature=0.7,
+                top_p=0.95,
+                top_k=40,
+                max_output_tokens=2048,
+                safety_settings=self.safety_settings
             )
             
-            # Verificar si la respuesta fue bloqueada por seguridad
+            # Generar contenido con nuevo SDK
+            response = self.client.models.generate_content(
+                model=self.modelo,
+                contents=prompt,
+                config=config
+            )
+            
+            # Verificar respuesta
             if not response.text:
                 logger.error("Respuesta bloqueada por filtros de seguridad")
                 return None
