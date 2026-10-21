@@ -180,6 +180,27 @@ Las contribuciones son bienvenidas. Por favor:
 
 Este proyecto es de código abierto y está disponible bajo la Licencia MIT.
 
+Todas las dependencias de terceros utilizadas en este proyecto tienen licencias compatibles con uso comercial. Ver [THIRD_PARTY_LICENSES.txt](THIRD_PARTY_LICENSES.txt) para detalles completos.
+
+## Descargo de Responsabilidad
+
+Este software utiliza servicios externos de terceros:
+
+- **Google Gemini API**: Requiere API key propia (gratuita con límites: 1,500 peticiones/día)
+- **DuckDuckGo Search**: Servicio de búsqueda sin API key
+
+El usuario es responsable de:
+- Obtener y gestionar sus propias API keys
+- Cumplir con los términos de servicio de Google Gemini
+- Respetar los límites de tasa (rate limits) de las APIs
+- El uso adecuado y ético del software
+
+El desarrollador no se hace responsable de:
+- Uso indebido del software
+- Violaciones de términos de servicio por parte del usuario
+- Costos asociados al exceder límites gratuitos de APIs
+- Contenido generado por la IA o extraído de fuentes web
+
 ## Soporte
 
 Si encuentras algún problema:
